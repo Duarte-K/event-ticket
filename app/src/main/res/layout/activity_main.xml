@@ -77,7 +77,8 @@
             android:background="@drawable/rounded_bg_white"
             android:hint="@string/email"
             android:singleLine="true"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +100,8 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:singleLine="true"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.Guideline

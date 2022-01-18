@@ -84,7 +84,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_passwordRegister"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:background="@drawable/rounded_bg_white"
             android:hint="@string/password"
             android:inputType="textPassword"
@@ -105,7 +105,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_emailRegister"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:background="@drawable/rounded_bg_white"
             android:hint="@string/email"
             android:singleLine="true"
@@ -123,12 +123,14 @@
         app:layout_constraintStart_toStartOf="@+id/guideline16">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_userRegister"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:background="@drawable/rounded_bg_white"
             android:hint="@string/user"
             android:singleLine="true"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

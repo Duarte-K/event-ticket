@@ -7,4 +7,6 @@
     <string name="register">Cadastrar</string>
     <string name="registerTitle">CADASTRO</string>
     <string name="user">Usuário</string>
+    <string name="welcome">Olá usuário</string>
+    <string name="logout">Log Out</string>
 </resources>
