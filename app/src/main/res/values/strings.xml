@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EventTicket</string>
+    <string name="version">Versão</string>
 </resources>
