@@ -1,6 +1,4 @@
-package com.example.eventticket;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.eventticket.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +6,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.eventticket.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

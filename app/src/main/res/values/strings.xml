@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">EventTicket</string>
     <string name="version">Versão</string>
+    <string name="email">Email</string>
+    <string name="password">Senha</string>
+    <string name="login">Entrar</string>
+    <string name="register">Cadastrar</string>
+    <string name="registerTitle">CADASTRO</string>
+    <string name="user">Usuário</string>
 </resources>
