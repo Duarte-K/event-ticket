@@ -15,4 +15,10 @@
     <string name="welcomeAdmin">Bem vindo!!</string>
     <string name="titleAdmin">Escolha a ação que deseja:</string>
     <string name="titleRegisterEvent">Insira os dados do evento:</string>
+    <string name="name">Nome do evento</string>
+    <string name="description">Descrição</string>
+    <string name="local">Localização</string>
+    <string name="date">Data</string>
+    <string name="hour">Horário</string>
+
 </resources>
