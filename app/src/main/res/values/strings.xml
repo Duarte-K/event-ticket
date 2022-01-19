@@ -9,4 +9,9 @@
     <string name="user">Usuário</string>
     <string name="welcome">Olá usuário</string>
     <string name="logout">Log Out</string>
+    <string name="searchTxt">Escolha sua localização:</string>
+    <string name="registerEvent">Cadastrar Evento</string>
+    <string name="eventList">Ver eventos</string>
+    <string name="welcomeAdmin">Bem vindo!!</string>
+    <string name="titleAdmin">Escolha a ação que deseja:</string>
 </resources>

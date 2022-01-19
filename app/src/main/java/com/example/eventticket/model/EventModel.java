@@ -1,7 +1,31 @@
-package com.example.eventticket;
+package com.example.eventticket.model;
 
 public class EventModel {
-    String name, local, hour, date;
+    String name, local, hour, date, artists, picture, description;
+
+    public String getArtists() {
+        return artists;
+    }
+
+    public void setArtists(String artists) {
+        this.artists = artists;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getName() {
         return name;
