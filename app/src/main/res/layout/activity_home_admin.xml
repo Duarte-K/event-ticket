@@ -122,6 +122,7 @@
         android:background="@drawable/rounded_bg_orange"
         android:text="@string/registerEvent"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline28"
         app:layout_constraintStart_toStartOf="@+id/guideline27"
         app:layout_constraintTop_toTopOf="@+id/guideline25" />
@@ -133,6 +134,7 @@
         android:background="@drawable/rounded_bg_orange"
         android:text="@string/eventList"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_logoutAdm"
         app:layout_constraintEnd_toStartOf="@+id/guideline28"
         app:layout_constraintStart_toStartOf="@+id/guideline27"
@@ -146,6 +148,7 @@
         android:background="@drawable/rounded_bg_orange"
         android:text="@string/logout"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/view6"
         app:layout_constraintEnd_toStartOf="@+id/guideline28"
         app:layout_constraintStart_toStartOf="@+id/guideline27" />

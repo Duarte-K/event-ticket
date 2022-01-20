@@ -12,4 +12,5 @@
     <color name="secondaryApp">#F2471D</color>
     <color name="secondaryVari">#8C2F18</color>
     <color name="darkColor">#262521</color>
+    <color name="color_hint_grey">#C0CDD8</color>
 </resources>
