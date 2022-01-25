@@ -2,6 +2,7 @@ package com.example.eventticket.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -13,15 +14,18 @@ import com.example.eventticket.utils.MaskEditUtil;
 
 public class RegisterEventActivity extends AppCompatActivity {
 
+    private Button btnRegister;
     private LinearLayout layout;
     private ImageButton btnAddArtist, btnRemoveArtist;
     private EditText name, desc, local, date, hour, artist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_event);
 
         layout = findViewById(R.id.linearLayout_artists);
+        btnRegister = findViewById(R.id.btn_RegisterEvent);
         btnAddArtist = findViewById(R.id.btn_addArtist);
         btnRemoveArtist = findViewById(R.id.btn_removeArtist);
         name = findViewById(R.id.et_NameEvent);
@@ -57,6 +61,13 @@ public class RegisterEventActivity extends AppCompatActivity {
                     }
 
                 }
+            }
+        });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
@@ -112,8 +123,8 @@ public class RegisterEventActivity extends AppCompatActivity {
         int count = layout.getChildCount();
         for(int i=0;i<count;i++){
             View artistViewChild = layout.getChildAt(i);
-            ImageButton imageBtnAddArtist = artistViewChild.findViewById(R.id.btnAdd);
-            ImageButton imageBtnRemoveArtist = artistViewChild.findViewById(R.id.btnRemove);
+            ImageButton imageBtnAddArtist = artistViewChild.findViewById(R.id.btn_addArtist);
+            ImageButton imageBtnRemoveArtist = artistViewChild.findViewById(R.id.btn_removeArtist);
             imageBtnAddArtist.setVisibility(View.GONE);
             imageBtnRemoveArtist.setVisibility(View.VISIBLE);
 

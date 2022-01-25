@@ -21,5 +21,12 @@
     <string name="date">Data</string>
     <string name="hour">Horário</string>
     <string name="artist">Participação</string>
+    <string name="genre">Gênero</string>
+    <string name="nameExample">Nome do evento</string>
+    <string name="localExample">Cidade:</string>
+    <string name="dateExample">Data:</string>
+    <string name="hourExample">Horário:</string>
+    <string name="genreExample">Gênero:</string>
+    <string name="info">Mais informações</string>
 
 </resources>

@@ -1,7 +1,22 @@
 package com.example.eventticket.model;
 
 public class EventModel {
-    String name, local, hour, date, artists, picture, description;
+    String name;
+    String local;
+    String hour;
+    String date;
+    String genre;
+    String artists;
+    String picture;
+    String description;
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
     public String getArtists() {
         return artists;
