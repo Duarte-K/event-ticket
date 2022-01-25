@@ -2,6 +2,7 @@ package com.example.eventticket.model;
 
 public class EventModel {
     String name;
+    String city;
     String local;
     String hour;
     String date;
@@ -9,6 +10,14 @@ public class EventModel {
     String artists;
     String picture;
     String description;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public String getGenre() {
         return genre;

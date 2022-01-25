@@ -18,15 +18,27 @@
     <string name="name">Nome do evento</string>
     <string name="description">Descrição</string>
     <string name="local">Cidade</string>
+    <string name="locate">Endereço</string>
     <string name="date">Data</string>
     <string name="hour">Horário</string>
     <string name="artist">Participação</string>
     <string name="genre">Gênero</string>
     <string name="nameExample">Nome do evento</string>
     <string name="localExample">Cidade:</string>
+    <string name="locateExample">Endereço:</string>
     <string name="dateExample">Data:</string>
     <string name="hourExample">Horário:</string>
     <string name="genreExample">Gênero:</string>
     <string name="info">Mais informações</string>
-
+    
+    <string-array name="list_genre">
+        <item>Casual</item>
+        <item>Formal</item>
+        <item>Festa</item>
+    </string-array>
+    <string-array name="list_city">
+        <item>Fortaleza</item>
+        <item>São Paulo</item>
+        <item>Rio de Janeiro</item>
+    </string-array>
 </resources>

@@ -2,10 +2,12 @@ package com.example.eventticket.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,11 +32,26 @@ public class RegisterEventActivity extends AppCompatActivity {
         btnRemoveArtist = findViewById(R.id.btn_removeArtist);
         name = findViewById(R.id.et_NameEvent);
         desc = findViewById(R.id.et_DescriptionEvent);
-        local = findViewById(R.id.et_LocalEvent);
+        local = findViewById(R.id.et_LocateEvent);
         date = findViewById(R.id.et_DateEvent);
         hour = findViewById(R.id.et_HourEvent);
         artist = findViewById(R.id.et_Artist);
 
+        //Spinner de gênero
+        Spinner spinner_genre = findViewById(R.id.sp_genre);
+        String[] events = getResources().getStringArray(R.array.list_genre);
+        ArrayAdapter<String> adapterGenre = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, events);
+        adapterGenre.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_genre.setAdapter(adapterGenre);
+
+        //Spinner de localização
+        Spinner spinner_city = findViewById(R.id.sp_city);
+        String[] cities = getResources().getStringArray(R.array.list_city);
+        ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+        adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_city.setAdapter(adapterCity);
+
+        //Máscaras de data e hora
         date.addTextChangedListener(MaskEditUtil.mask(date, MaskEditUtil.FORMAT_DATE));
         hour.addTextChangedListener(MaskEditUtil.mask(hour, MaskEditUtil.FORMAT_HOUR));
 

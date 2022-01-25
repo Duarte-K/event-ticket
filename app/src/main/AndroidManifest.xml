@@ -15,7 +15,8 @@
         android:theme="@style/Theme.EventTicket">
         <activity
             android:name=".activities.RegisterEventActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.HomeAdminActivity"
             android:exported="true" />

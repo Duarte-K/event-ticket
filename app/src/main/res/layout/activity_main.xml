@@ -71,11 +71,13 @@
         app:layout_constraintStart_toStartOf="@+id/guideline8">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_emailLogin"
+            android:id="@+id/et_UserLogin"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/rounded_bg_white"
-            android:hint="@string/email"
+            android:hint="@string/user"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:singleLine="true"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck" />
@@ -99,6 +101,8 @@
             android:background="@drawable/rounded_bg_white"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:singleLine="true"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck" />
