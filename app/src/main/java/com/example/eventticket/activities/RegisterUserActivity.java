@@ -23,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterUserActivity extends AppCompatActivity {
-
+    private UserModel userModel;
     private EditText user, email, password;
     private Button btnRegisterUser;
     @Override
@@ -39,7 +39,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         btnRegisterUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //check();
+                check();
             }
         });
     }
@@ -56,7 +56,11 @@ public class RegisterUserActivity extends AppCompatActivity {
         }else if(pass.equals("")){
             password.setError("Preencha o campo para continuar");
         }else{
-            final String jsonUser = new Gson().toJson(user); //tranforma o user da sessão em json
+            userModel.setAccess("usuário");
+            userModel.setName(us);
+            userModel.setEmail(em);
+            userModel.setPassword(pass);
+            final String jsonUser = new Gson().toJson(userModel); //tranforma o user da sessão em json
             RequestBody objectUserJson = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), jsonUser); //Transforma o json em um requestbody
             retrofitRegisterUser(objectUserJson);
         }
@@ -105,8 +109,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         });
     }
 
-    public void checkRegisteredUser(String message) {
-        if (message.equals("Usuário cadastrado")) {
+    public void checkRegisteredUser(String msg) {
+        if (msg.equals("Usuário cadastrado")) {
             Toast.makeText(getApplicationContext(), "Usuário Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);

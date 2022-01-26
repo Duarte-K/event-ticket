@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="175dp" />
+        app:layout_constraintGuide_begin="414dp" />
 
     <TextView
         android:id="@+id/txSearch"
@@ -74,20 +74,19 @@
         android:text="@string/searchTxt"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline21"
         app:layout_constraintStart_toStartOf="@+id/guideline20"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/sp_search"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:entries="@android:array/emailAddressTypes"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/guideline22"
+        android:layout_height="45dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_bg_white"
         app:layout_constraintEnd_toStartOf="@+id/guideline21"
-        app:layout_constraintStart_toStartOf="@+id/guideline20"
-        app:layout_constraintTop_toBottomOf="@+id/txSearch" />
+        app:layout_constraintStart_toEndOf="@+id/txSearch"
+        app:layout_constraintTop_toBottomOf="@+id/view3"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
 
     //URL base do endpoint. Deve sempre terminar com /
-    public static final String API_BASE_URL = "";
+    public static final String API_BASE_URL = "http://192.168.124.81:3000/";
 
 
     public static <S> S createService(Class<S> serviceClass) {

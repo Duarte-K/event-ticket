@@ -9,7 +9,7 @@
     <string name="user">Usuário</string>
     <string name="welcome">Olá usuário</string>
     <string name="logout">Log Out</string>
-    <string name="searchTxt">Escolha sua localização:</string>
+    <string name="searchTxt">Filtrar por:</string>
     <string name="registerEvent">Cadastrar Evento</string>
     <string name="eventList">Ver eventos</string>
     <string name="welcomeAdmin">Bem vindo!!</string>
@@ -30,7 +30,7 @@
     <string name="hourExample">Horário:</string>
     <string name="genreExample">Gênero:</string>
     <string name="info">Mais informações</string>
-    
+
     <string-array name="list_genre">
         <item>Casual</item>
         <item>Formal</item>
@@ -41,4 +41,12 @@
         <item>São Paulo</item>
         <item>Rio de Janeiro</item>
     </string-array>
+    <string-array name="list_search">
+        <item>Todos</item>
+        <item>Cidade</item>
+        <item>Gênero</item>
+        <item>Data</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

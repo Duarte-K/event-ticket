@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EventTicket">
         <activity
+            android:name=".activities.EditEventActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.RegisterEventActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />

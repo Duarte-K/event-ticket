@@ -21,8 +21,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        sessionControl = new SessionControl(getApplicationContext());
-        sessionControl.checkSession();
+        //sessionControl = new SessionControl(getApplicationContext());
+        //sessionControl.checkSession();
 
         logout = findViewById(R.id.img_logout);
 
@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sessionControl.logout();
+                //sessionControl.logout();
             }
         });
     }

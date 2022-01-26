@@ -1,10 +1,19 @@
 package com.example.eventticket.model;
 
 public class UserModel {
+    private String access;
     private String name;
     private String email;
     private String password;
     private String message;
+
+    public String getAccess() {
+        return access;
+    }
+
+    public void setAccess(String access) {
+        this.access = access;
+    }
 
     public String getMessage() {
         return message;
