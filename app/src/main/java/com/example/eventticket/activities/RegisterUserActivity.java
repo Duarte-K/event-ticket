@@ -1,8 +1,12 @@
 package com.example.eventticket.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +44,11 @@ public class RegisterUserActivity extends AppCompatActivity {
         btnRegisterUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                check();
+                if (isNetworkConnected()){
+                    check();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Sem conexão com a internet", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -54,6 +62,8 @@ public class RegisterUserActivity extends AppCompatActivity {
             user.setError("Preencha o campo para continuar");
         }else if(em.equals("")){
             email.setError("Preencha o campo para continuar");
+        }else if(isValidEmail(em) == false){
+            email.setError("Digite um email válido");
         }else if(pass.equals("")){
             password.setError("Preencha o campo para continuar");
         }else{
@@ -100,7 +110,6 @@ public class RegisterUserActivity extends AppCompatActivity {
                     ResponseBody errorBody = response.errorBody();
                     Log.e("Erro: ", " "+errorBody);
 
-
                 }
             }
 
@@ -123,6 +132,18 @@ public class RegisterUserActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), "Erro:Usuário não cadastrado ", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    //Método para verificar se tem acesso a internet
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
+    //Método para checar se o email é válido
+    public static boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 }
 

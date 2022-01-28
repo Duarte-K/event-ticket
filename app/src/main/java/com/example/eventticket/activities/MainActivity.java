@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 final String jsonUser = new Gson().toJson(user); //tranforma o objeto User em json
                 Log.i("JSON_LOGIN", jsonUser);
                 RequestBody objectJson = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), jsonUser); //Transforma o json em um requestbody
-
                 retrofitSearchUser(objectJson,paramUser); //metodo que chama a api de autenticação
 
             }

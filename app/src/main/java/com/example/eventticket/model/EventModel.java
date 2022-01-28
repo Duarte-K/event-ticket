@@ -1,15 +1,32 @@
 package com.example.eventticket.model;
 
 public class EventModel {
-    String name;
-    String city;
-    String local;
-    String hour;
-    String date;
-    String genre;
-    String artists;
-    String picture;
-    String description;
+    private String name;
+    private String city;
+    private String local;
+    private String hour;
+    private String date;
+    private String genre;
+    private String artists;
+    private String description;
+    private String message;
+    private byte[] picture;
+
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public String getCity() {
         return city;
@@ -33,14 +50,6 @@ public class EventModel {
 
     public void setArtists(String artists) {
         this.artists = artists;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
     }
 
     public String getDescription() {
