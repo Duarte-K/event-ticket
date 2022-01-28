@@ -88,8 +88,11 @@
             android:background="@drawable/rounded_bg_white"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:singleLine="true"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_hint_grey" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -108,8 +111,11 @@
             android:layout_height="48dp"
             android:background="@drawable/rounded_bg_white"
             android:hint="@string/email"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:singleLine="true"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_hint_grey" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -128,8 +134,11 @@
             android:layout_height="48dp"
             android:background="@drawable/rounded_bg_white"
             android:hint="@string/user"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:singleLine="true"
             android:textColor="@color/black"
+            android:textColorHint="@color/color_hint_grey"
             tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -35,6 +35,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         user = findViewById(R.id.et_userRegister);
         email = findViewById(R.id.et_emailRegister);
         password = findViewById(R.id.et_passwordRegister);
+        userModel = new UserModel();
 
         btnRegisterUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,11 +57,13 @@ public class RegisterUserActivity extends AppCompatActivity {
         }else if(pass.equals("")){
             password.setError("Preencha o campo para continuar");
         }else{
-            userModel.setAccess("usuário");
+            userModel.setAccess("usuario");
             userModel.setName(us);
             userModel.setEmail(em);
             userModel.setPassword(pass);
-            final String jsonUser = new Gson().toJson(userModel); //tranforma o user da sessão em json
+            Log.i("Valores", "os valores são: "+ userModel.getAccess()+","+userModel.getName()+","+userModel.getEmail()+","+userModel.getPassword());
+            final String jsonUser = new Gson().toJson(userModel); //tranforma o objeto em json
+            Log.i("JSON",jsonUser);
             RequestBody objectUserJson = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), jsonUser); //Transforma o json em um requestbody
             retrofitRegisterUser(objectUserJson);
         }
@@ -82,7 +85,9 @@ public class RegisterUserActivity extends AppCompatActivity {
 
                     //verifica aqui se o corpo da resposta não é nulo
                     if (respostaServidor != null) {
-                        Log.i("RETORNO_SERVICE", "messagem: "+respostaServidor.getMessage());
+                        Toast.makeText(getApplicationContext(), "mensagem: "+respostaServidor.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.i("RETORNO_SERVICE", "mensagem: "+respostaServidor.getMessage());
+                        Log.i("RETORNO_BODY_SERVICE", "body: "+respostaServidor);
                         checkRegisteredUser(respostaServidor.getMessage());
                     } else {
                         //resposta nula
@@ -109,8 +114,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         });
     }
 
-    public void checkRegisteredUser(String msg) {
-        if (msg.equals("Usuário cadastrado")) {
+    public void checkRegisteredUser(String message) {
+        if (message.equals("Usuário cadastrado!")) {
             Toast.makeText(getApplicationContext(), "Usuário Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);

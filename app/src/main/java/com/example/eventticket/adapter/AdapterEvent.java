@@ -55,7 +55,7 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.MyViewHolder
             local = itemView.findViewById(R.id.tx_localEvent);
             date = itemView.findViewById(R.id.tx_dateEvent);
             hour = itemView.findViewById(R.id.tx_hourEvent);
-            btnEdit = itemView.findViewById(R.id.btn_edit);
+            btnEdit = itemView.findViewById(R.id.btn_close);
             btnRemove = itemView.findViewById(R.id.btn_remove);
             btnInfo = itemView.findViewById(R.id.btn_info);
         }
