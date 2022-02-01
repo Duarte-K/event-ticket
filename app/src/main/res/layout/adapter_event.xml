@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:fontFamily="@font/montserrat_bold"
             android:text="@string/name"
             android:textAlignment="textStart"
             android:textColor="@color/secondaryVari"
@@ -51,7 +52,8 @@
             android:id="@+id/tx_genreLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
+            android:layout_weight="5"
+            android:fontFamily="@font/montserrat_regular"
             android:text="@string/genreExample"
             android:textColor="@color/primaryVari"
             android:textSize="16sp" />
@@ -61,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/montserrat_medium"
             android:text="@string/genre"
             android:textColor="@color/primaryApp"
             android:textSize="16sp" />
@@ -75,7 +78,8 @@
             android:id="@+id/tx_localLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
+            android:layout_weight="5"
+            android:fontFamily="@font/montserrat_regular"
             android:text="@string/localExample"
             android:textColor="@color/primaryVari"
             android:textSize="16sp"
@@ -86,6 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/montserrat_medium"
             android:text="@string/local"
             android:textColor="@color/primaryApp"
             android:textSize="16sp"
@@ -102,6 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="8"
+            android:fontFamily="@font/montserrat_regular"
             android:text="@string/dateExample"
             android:textColor="@color/primaryVari"
             android:textSize="16sp" />
@@ -111,6 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/montserrat_medium"
             android:text="@string/date"
             android:textColor="@color/primaryApp"
             android:textSize="16sp" />
@@ -124,10 +131,13 @@
 
         <Button
             android:id="@+id/btn_info"
-            android:layout_width="200dp"
+            android:layout_width="220dp"
             android:layout_height="38dp"
             android:background="@drawable/rounded_bg_orange"
+            android:fontFamily="@font/montserrat_medium"
             android:text="@string/info"
+            android:textColor="@color/white"
+            android:textSize="14sp"
             tools:ignore="TouchTargetSizeCheck" />
 
         <View

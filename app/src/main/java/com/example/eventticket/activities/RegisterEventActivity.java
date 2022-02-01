@@ -1,5 +1,6 @@
 package com.example.eventticket.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -78,6 +79,7 @@ public class RegisterEventActivity extends AppCompatActivity {
         //ByteArrayInputStream imagemStream = new ByteArrayInputStream(outImage);
         //Bitmap imageBitmap = BitmapFactory.decodeStream(imagemStream);
         //imagem.setImageBitmap(imageBitmap);
+
 
         btnAddArtist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,7 +204,6 @@ public class RegisterEventActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Erro: resposta nula", Toast.LENGTH_LONG).show();
                     }
                 } else {
-
                     Toast.makeText(getApplicationContext(),"Erro ao registrar evento", Toast.LENGTH_LONG).show();
                     // segura os erros de requisição
                     ResponseBody errorBody = response.errorBody();
@@ -217,6 +218,7 @@ public class RegisterEventActivity extends AppCompatActivity {
                 Log.e("Erro: ",t.getMessage());
                 Toast.makeText(getApplicationContext(),"Erro na chamada ao servidor", Toast.LENGTH_SHORT).show();
                 Toast.makeText(getApplicationContext(),t.getMessage(), Toast.LENGTH_LONG).show();
+
             }
         });
     }
@@ -230,6 +232,7 @@ public class RegisterEventActivity extends AppCompatActivity {
     }
 
     //Método para verificar se tem acesso a internet
+    @SuppressLint("MissingPermission")
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -237,6 +240,10 @@ public class RegisterEventActivity extends AppCompatActivity {
     }
 
     public void checking(){
-
+        String n = name.getText().toString();
+        String de = desc.getText().toString();
+        String l = local.getText().toString();
+        String da = date.getText().toString();
+        String h = hour.getText().toString();
     }
 }
