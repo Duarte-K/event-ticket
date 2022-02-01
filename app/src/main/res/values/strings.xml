@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">EventTicket</string>
+    <string name="splash">Event Ticket</string>
     <string name="version">Versão</string>
     <string name="email">Email</string>
     <string name="password">Senha</string>

@@ -9,6 +9,6 @@ import retrofit2.http.POST;
 
 public interface ServiceAuthenticate {
     //busca o usuário com base no nome.
-    @POST("login")
+    @POST("selectUser")
     Call<UserModel> authenticateUser(@Body RequestBody object);
 }

@@ -1,5 +1,7 @@
 package com.example.eventticket.activities;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -105,7 +107,11 @@ public class RegisterEventActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isNetworkConnected()){
 
+                }else {
+                    Toast.makeText(getApplicationContext(), "Sem conexão com a internet", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -215,7 +221,22 @@ public class RegisterEventActivity extends AppCompatActivity {
         });
     }
 
-    public void checkRegisteredEvent(String message){
+    public void checkRegisteredEvent(String msg){
+        if(msg.equals("Evento cadastrado")){
+            Toast.makeText(getApplicationContext(), "Evento Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(getApplicationContext(), "Evento não foi cadastrado", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //Método para verificar se tem acesso a internet
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
+    public void checking(){
 
     }
 }

@@ -58,9 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //check();
-                Intent intent = new Intent(getApplicationContext(), HomeAdminActivity.class);
-                startActivity(intent);
+                check();
             }
         });
     }
@@ -77,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 UserModel user = new UserModel();
                 user.setName(paramUser);
-                user.setPassword(paramPassword);
                 final String jsonUser = new Gson().toJson(user); //tranforma o objeto User em json
                 Log.i("JSON_LOGIN", jsonUser);
                 RequestBody objectJson = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), jsonUser); //Transforma o json em um requestbody
@@ -137,12 +134,12 @@ public class MainActivity extends AppCompatActivity {
         Log.i("Resposta Login", " "+message);
         if(message.equals("deu certo")){
             session.setUserName(paramUser);
-            if(session.getUserName().equals("usuário")) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            if(session.getUserName().equals("admin")) {
+                Intent intent = new Intent(getApplicationContext(), HomeAdminActivity.class);
                 startActivity(intent);
                 finish();
             }else{
-                Intent intent = new Intent(getApplicationContext(), HomeAdminActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
                 finish();
             }

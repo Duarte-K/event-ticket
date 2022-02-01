@@ -31,7 +31,8 @@ public class HomeAdminActivity extends AppCompatActivity {
         btnSeeEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
             }
         });
 
