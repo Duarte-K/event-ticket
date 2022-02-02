@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.eventticket.R;
+import com.example.eventticket.fragments.DetailsEventFragment;
 import com.example.eventticket.model.EventModel;
 
 import java.util.ArrayList;
@@ -58,6 +59,14 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.MyViewHolder
             btnEdit = itemView.findViewById(R.id.btn_close);
             btnRemove = itemView.findViewById(R.id.btn_remove);
             btnInfo = itemView.findViewById(R.id.btn_info);
+
+            btnInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DetailsEventFragment dialog = new DetailsEventFragment(listEvent.get(getAdapterPosition()));
+                    //dialog.show(getSupportFragmentManager(), dialog.getClass().getSimpleName());
+                }
+            });
         }
     }
 }

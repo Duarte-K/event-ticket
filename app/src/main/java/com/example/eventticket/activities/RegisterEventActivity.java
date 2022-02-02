@@ -29,7 +29,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterEventActivity extends AppCompatActivity {
-
+    private String city, genre;
+    private EventModel eventModel;
     private Button btnRegister;
     private LinearLayout layout;
     private ImageButton btnAddArtist, btnRemoveArtist;
@@ -64,6 +65,9 @@ public class RegisterEventActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
         adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_city.setAdapter(adapterCity);
+
+        city = String.valueOf(spinner_city.getOnItemSelectedListener());
+        genre = String.valueOf(spinner_genre.getOnItemSelectedListener());
 
         //Máscaras de data e hora
         date.addTextChangedListener(MaskEditUtil.mask(date, MaskEditUtil.FORMAT_DATE));
@@ -110,7 +114,7 @@ public class RegisterEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isNetworkConnected()){
-
+                    checking();
                 }else {
                     Toast.makeText(getApplicationContext(), "Sem conexão com a internet", Toast.LENGTH_SHORT).show();
                 }
@@ -245,5 +249,28 @@ public class RegisterEventActivity extends AppCompatActivity {
         String l = local.getText().toString();
         String da = date.getText().toString();
         String h = hour.getText().toString();
+
+        if(n.equals("")){
+            name.setError("Preencha o campo para continuar");
+        }else if(de.equals("")){
+            desc.setError("Preencha o campo para continuar");
+        }else if(l.equals("")){
+            local.setError("Preencha o campo para continuar");
+        }else if(da.equals("")){
+            date.setError("Preencha o campo para continuar");
+        }else if(h.equals("")){
+            hour.setError("Preencha o campo para continuar");
+        }else{
+            eventModel = new EventModel();
+            eventModel.setName(n);
+            eventModel.setDescription(de);
+            eventModel.setCity(city);
+            eventModel.setGenre(genre);
+            eventModel.setLocal(l);
+            eventModel.setDate(da);
+            eventModel.setHour(h);
+
+            //retrofitRegisterEvent(eventModel);
+        }
     }
 }
