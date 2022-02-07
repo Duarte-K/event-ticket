@@ -31,19 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/titleRegisterEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="@string/titleRegisterEvent"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline30"
-        app:layout_constraintStart_toStartOf="@+id/guideline29"
-        app:layout_constraintTop_toBottomOf="@+id/view8" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline29"
         android:layout_width="wrap_content"
@@ -107,7 +94,8 @@
         app:layout_constraintBottom_toTopOf="@+id/view9"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="@+id/guideline33"
-        app:layout_constraintTop_toTopOf="@+id/guideline32" />
+        app:layout_constraintTop_toTopOf="@+id/guideline32"
+        tools:ignore="TextContrastCheck" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -134,6 +122,7 @@
                 android:background="@drawable/rounded_bg_white"
                 android:ems="10"
                 android:hint="@string/name"
+                android:inputType="text"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:singleLine="true"
@@ -149,6 +138,7 @@
                 android:background="@drawable/rounded_bg_white"
                 android:ems="10"
                 android:hint="@string/description"
+                android:inputType="text"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:singleLine="true"
@@ -171,6 +161,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/rounded_bg_white"
+                android:spinnerMode="dropdown"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <EditText
@@ -203,7 +194,8 @@
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_hint_grey"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck"
+                android:importantForAutofill="no" />
 
             <EditText
                 android:id="@+id/et_HourEvent"
@@ -219,7 +211,8 @@
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_hint_grey"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck"
+                android:importantForAutofill="no" />
 
             <LinearLayout
                 android:id="@+id/linearLayout_artists"
@@ -279,5 +272,15 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/btn_photo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline31"
+        app:layout_constraintEnd_toStartOf="@+id/guideline34"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toBottomOf="@+id/view8"
+        app:srcCompat="@drawable/ic_camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

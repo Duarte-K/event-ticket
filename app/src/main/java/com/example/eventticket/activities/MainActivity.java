@@ -36,8 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
         session = new SessionModel(getApplicationContext());
 
+        session.setUserName("admin");
+
+        //Se já existir sessão, vai automaticamente para a tela home
         if(!session.getUserName().equals("") ) {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            Intent intent = new Intent(getApplicationContext(), HomeAdminActivity.class);
             startActivity(intent);
             finish();
         }
@@ -58,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                check();
+                //check();
+
             }
         });
     }
@@ -101,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
                     //verifica aqui se o corpo da resposta não é nulo
                     if (respostaServidor != null) {
                         //Passar os dados para o adapter e setta a recyclerView.
-
                         userCheckExist(respostaServidor.getMessage(),user);
                     } else {
                         //resposta nula significa que o usuario não tem repositorios

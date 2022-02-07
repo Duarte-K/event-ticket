@@ -35,6 +35,7 @@ public class DetailsEventFragment extends SupportBlurDialogFragment {
         TextView data = layout.findViewById(R.id.tx_dateEvent);
         TextView hora = layout.findViewById(R.id.tx_hourEvent);
 
+        event = new EventModel();
         name.setText(event.getName());
         descricao.setText(event.getDescription());
         genero.setText(event.getGenre());

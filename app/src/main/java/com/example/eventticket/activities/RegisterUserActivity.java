@@ -45,11 +45,16 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         //Se já existir uma sessão, vai automaticamente para tela home
         if(!session.getUserName().equals("") ) {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(intent);
-            finish();
+            if(session.getUserName().equals("usuario")){
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }else if(session.getUserName().equals("admin")){
+                Intent intent = new Intent(getApplicationContext(), HomeAdminActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
-
         btnRegisterUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +76,7 @@ public class RegisterUserActivity extends AppCompatActivity {
             user.setError("Preencha o campo para continuar");
         }else if(em.equals("")){
             email.setError("Preencha o campo para continuar");
-        }else if(isValidEmail(em) == false){
+        }else if(!isValidEmail(em)){
             email.setError("Digite um email válido");
         }else if(pass.equals("")){
             password.setError("Preencha o campo para continuar");
@@ -146,4 +151,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 }
+
+
+
 

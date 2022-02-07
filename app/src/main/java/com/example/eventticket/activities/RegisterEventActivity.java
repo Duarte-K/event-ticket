@@ -2,18 +2,25 @@ package com.example.eventticket.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eventticket.R;
@@ -21,6 +28,8 @@ import com.example.eventticket.model.EventModel;
 import com.example.eventticket.service.ServiceGenerator;
 import com.example.eventticket.service.ServiceRegisterEvent;
 import com.example.eventticket.utils.MaskEditUtil;
+
+import java.io.ByteArrayOutputStream;
 
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -30,12 +39,14 @@ import retrofit2.Response;
 
 public class RegisterEventActivity extends AppCompatActivity {
     private String city, genre;
+    private ImageView btnPhoto;
     private EventModel eventModel;
     private Button btnRegister;
     private LinearLayout layout;
     private ImageButton btnAddArtist, btnRemoveArtist;
     private EditText name, desc, local, date, hour, artist;
 
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +62,7 @@ public class RegisterEventActivity extends AppCompatActivity {
         date = findViewById(R.id.et_DateEvent);
         hour = findViewById(R.id.et_HourEvent);
         artist = findViewById(R.id.et_Artist);
+        btnPhoto = findViewById(R.id.btn_photo);
 
         //Spinner de gênero
         Spinner spinner_genre = findViewById(R.id.sp_genre);
@@ -74,16 +86,24 @@ public class RegisterEventActivity extends AppCompatActivity {
         hour.addTextChangedListener(MaskEditUtil.mask(hour, MaskEditUtil.FORMAT_HOUR));
 
                 //Transformação de imagem para salvar no banco
-        //ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        //imagem.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        //byte imagesByte[] = stream.toByteArray();
+//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//        imagem.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+//        byte imagesByte[] = stream.toByteArray();
+//
+//              //Como Recuperar do banco
+//        byte[] outImage = eventModel.getPicture();
+//        ByteArrayInputStream imagemStream = new ByteArrayInputStream(outImage);
+//        Bitmap imageBitmap = BitmapFactory.decodeStream(imagemStream);
+//        imagem.setImageBitmap(imageBitmap);
 
-                //Como Recuperar do banco
-        //byte[] outImage = evento.getPicture();
-        //ByteArrayInputStream imagemStream = new ByteArrayInputStream(outImage);
-        //Bitmap imageBitmap = BitmapFactory.decodeStream(imagemStream);
-        //imagem.setImageBitmap(imageBitmap);
-
+        btnPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 1);
+            }
+        });
 
         btnAddArtist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +140,27 @@ public class RegisterEventActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            if(resultCode == RESULT_OK){
+                try {
+                    Uri imageUri = data.getData();
+                    Bitmap photo = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                    Bitmap photoRedim = Bitmap.createScaledBitmap(photo, 256, 256, true);
+                    btnPhoto.setImageBitmap(photoRedim);
+                    byte[] imageToByte;
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    photoRedim.compress(Bitmap.CompressFormat.PNG, 70, stream);
+                    imageToByte = stream.toByteArray();
+                }catch (Exception e){
+
+                }
+            }
+        }
     }
 
     public void addArtist(){
@@ -267,10 +308,19 @@ public class RegisterEventActivity extends AppCompatActivity {
             eventModel.setCity(city);
             eventModel.setGenre(genre);
             eventModel.setLocal(l);
+            eventModel.setPicture(imageViewToByte(btnPhoto));
             eventModel.setDate(da);
             eventModel.setHour(h);
 
             //retrofitRegisterEvent(eventModel);
         }
+    }
+
+    public static byte[] imageViewToByte(ImageView image){
+        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress( Bitmap.CompressFormat.PNG, 100, stream );
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
     }
 }
