@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,12 +25,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eventticket.R;
+import com.example.eventticket.model.ArtistsModel;
 import com.example.eventticket.model.EventModel;
 import com.example.eventticket.service.ServiceGenerator;
 import com.example.eventticket.service.ServiceRegisterEvent;
 import com.example.eventticket.utils.MaskEditUtil;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -40,11 +43,12 @@ import retrofit2.Response;
 public class RegisterEventActivity extends AppCompatActivity {
     private String city, genre;
     private ImageView btnPhoto;
-    private EventModel eventModel;
+    private ArrayList<ArtistsModel> artistsList = new ArrayList<>();
+    private EventModel eventModel = new EventModel();
     private Button btnRegister;
     private LinearLayout layout;
     private ImageButton btnAddArtist, btnRemoveArtist;
-    private EditText name, desc, local, date, hour, artist;
+    private EditText name, desc, local, date, hour, art;
 
     @SuppressLint("WrongThread")
     @Override
@@ -61,25 +65,69 @@ public class RegisterEventActivity extends AppCompatActivity {
         local = findViewById(R.id.et_LocateEvent);
         date = findViewById(R.id.et_DateEvent);
         hour = findViewById(R.id.et_HourEvent);
-        artist = findViewById(R.id.et_Artist);
         btnPhoto = findViewById(R.id.btn_photo);
+
+
 
         //Spinner de gênero
         Spinner spinner_genre = findViewById(R.id.sp_genre);
         String[] events = getResources().getStringArray(R.array.list_genre);
         ArrayAdapter<String> adapterGenre = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, events);
         adapterGenre.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_genre.setAdapter(adapterGenre);
+        if(spinner_genre != null) {
+            spinner_genre.setAdapter(adapterGenre);
+        }
+        spinner_genre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0){
+                    eventModel.setGenre("Casual");
+                    Toast.makeText(getApplicationContext(), eventModel.getGenre(), Toast.LENGTH_SHORT).show();
+                }else if(position == 1){
+                    eventModel.setGenre("Formal");
+                    Toast.makeText(getApplicationContext(), eventModel.getGenre(), Toast.LENGTH_SHORT).show();
+                }else if(position == 2){
+                    eventModel.setGenre("Festa");
+                    Toast.makeText(getApplicationContext(), eventModel.getGenre(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         //Spinner de localização
         Spinner spinner_city = findViewById(R.id.sp_city);
         String[] cities = getResources().getStringArray(R.array.list_city);
-        ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cities);
         adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_city.setAdapter(adapterCity);
+        if(spinner_city != null) {
+            spinner_city.setAdapter(adapterCity);
+        }
+        spinner_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0){
+                    eventModel.setCity("Fortaleza");
+                    Toast.makeText(getApplicationContext(), eventModel.getCity(), Toast.LENGTH_SHORT).show();
+                }else if(position == 1){
+                    eventModel.setCity("São Paulo");
+                    Toast.makeText(getApplicationContext(), eventModel.getCity(), Toast.LENGTH_SHORT).show();
+                }else if(position == 2){
+                    eventModel.setCity("Rio de Janeiro");
+                    Toast.makeText(getApplicationContext(), eventModel.getCity(), Toast.LENGTH_SHORT).show();
+                }
+                Log.i("spinners", "cidade: "+eventModel.getCity()+", genero: "+eventModel.getGenre());
+            }
 
-        city = String.valueOf(spinner_city.getOnItemSelectedListener());
-        genre = String.valueOf(spinner_genre.getOnItemSelectedListener());
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         //Máscaras de data e hora
         date.addTextChangedListener(MaskEditUtil.mask(date, MaskEditUtil.FORMAT_DATE));
@@ -167,8 +215,8 @@ public class RegisterEventActivity extends AppCompatActivity {
         final View itemView = getLayoutInflater().inflate(R.layout.artist,null,false);
 
         EditText editText = itemView.findViewById(R.id.et_Artist);
-        ImageButton imageBtnAddArtist =  itemView.findViewById(R.id.btnAdd);
-        ImageButton imageBtnRemoveArtist = itemView.findViewById(R.id.btnRemove);
+        ImageButton imageBtnAddArtist =  itemView.findViewById(R.id.btn_addArtist);
+        ImageButton imageBtnRemoveArtist = itemView.findViewById(R.id.btn_removeArtist);
 
 
         imageBtnAddArtist.setOnClickListener(new View.OnClickListener() {
@@ -302,15 +350,21 @@ public class RegisterEventActivity extends AppCompatActivity {
         }else if(h.equals("")){
             hour.setError("Preencha o campo para continuar");
         }else{
-            eventModel = new EventModel();
             eventModel.setName(n);
             eventModel.setDescription(de);
-            eventModel.setCity(city);
-            eventModel.setGenre(genre);
             eventModel.setLocal(l);
             eventModel.setPicture(imageViewToByte(btnPhoto));
             eventModel.setDate(da);
             eventModel.setHour(h);
+
+            if (checkArtists()) {
+                String[] itemsArtists = new String[artistsList.size()];
+                int cont = 0;
+                for (ArtistsModel artists:artistsList) {
+                    itemsArtists[cont] = artists.getDescription();
+                    cont++;
+                }
+            }
 
             //retrofitRegisterEvent(eventModel);
         }
@@ -322,5 +376,38 @@ public class RegisterEventActivity extends AppCompatActivity {
         bitmap.compress( Bitmap.CompressFormat.PNG, 100, stream );
         byte[] byteArray = stream.toByteArray();
         return byteArray;
+    }
+
+    public Boolean checkArtists(){
+        artistsList.clear();
+        boolean result = true;
+
+        for(int i=0;i<layout.getChildCount();i++) {
+
+            View itemsViewChild = layout.getChildAt(i);
+
+            EditText editTextItem = itemsViewChild.findViewById(R.id.et_Artist);
+
+            ArtistsModel artist = new ArtistsModel();
+            if (i == 0) {
+                if(!editTextItem.getText().toString().equals("")){
+                    artist.setDescription(editTextItem.getText().toString());
+                    artistsList.add(artist);
+                }else{
+                    editTextItem.setError("Preencha o campo para continuar");
+                    result = false;
+                    break;
+                }
+            }else {
+                if (!editTextItem.getText().toString().equals("")) {
+                    artist.setDescription(editTextItem.getText().toString());
+                    artistsList.add(artist);
+                }
+
+            }
+
+        }
+
+        return result;
     }
 }

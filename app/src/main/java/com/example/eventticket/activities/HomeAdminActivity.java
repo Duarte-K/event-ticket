@@ -8,9 +8,11 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eventticket.R;
+import com.example.eventticket.control.SessionControl;
 
 public class HomeAdminActivity extends AppCompatActivity {
     private Button btnRegisterEvent, btnSeeEvent, btnLogout;
+    private SessionControl session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +21,8 @@ public class HomeAdminActivity extends AppCompatActivity {
          btnRegisterEvent = findViewById(R.id.btn_registerEvent);
          btnSeeEvent = findViewById(R.id.btn_seeEvent);
          btnLogout = findViewById(R.id.btn_logoutAdm);
+         session = new SessionControl(getApplicationContext());
+         session.checkSession();
 
          btnRegisterEvent.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -39,6 +43,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //session.logout();
                 finish();
             }
         });

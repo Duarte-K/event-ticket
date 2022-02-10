@@ -101,6 +101,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rounded_trasparent_bg_orange"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline32"
         app:layout_constraintEnd_toStartOf="@+id/guideline30"
         app:layout_constraintStart_toStartOf="@+id/guideline29"
@@ -152,6 +154,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_bg_white"
+                android:dropDownSelector="@color/black"
                 android:spinnerMode="dropdown"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
@@ -159,8 +162,9 @@
                 android:id="@+id/sp_city"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_bg_white"
+                android:dropDownSelector="@color/black"
                 android:spinnerMode="dropdown"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
@@ -188,50 +192,50 @@
                 android:background="@drawable/rounded_bg_white"
                 android:ems="10"
                 android:hint="@string/date"
+                android:importantForAutofill="no"
                 android:inputType="date"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_hint_grey"
-                tools:ignore="TouchTargetSizeCheck"
-                android:importantForAutofill="no" />
+                tools:ignore="TouchTargetSizeCheck" />
 
             <EditText
                 android:id="@+id/et_HourEvent"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_bg_white"
                 android:ems="10"
                 android:hint="@string/hour"
+                android:importantForAutofill="no"
                 android:inputType="time"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_hint_grey"
-                tools:ignore="TouchTargetSizeCheck"
-                android:importantForAutofill="no" />
+                tools:ignore="TouchTargetSizeCheck" />
 
             <LinearLayout
                 android:id="@+id/linearLayout_artists"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/et_Artist"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_weight="1"
+                        android:layout_weight="4"
                         android:background="@drawable/rounded_bg_white"
                         android:ems="10"
                         android:hint="@string/artist"
@@ -248,8 +252,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_bg_orange"
                         app:srcCompat="@drawable/ic_add"
@@ -260,8 +263,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_bg_orange"
                         android:visibility="gone"
@@ -275,8 +277,8 @@
 
     <ImageView
         android:id="@+id/btn_photo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline31"
         app:layout_constraintEnd_toStartOf="@+id/guideline34"
         app:layout_constraintStart_toStartOf="@+id/guideline33"

@@ -9,8 +9,8 @@ android {
         applicationId "com.example.eventticket"
         minSdk 21
         targetSdk 31
-        versionCode 6
-        versionName "1.05.10"
+        versionCode 7
+        versionName "1.06.00"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

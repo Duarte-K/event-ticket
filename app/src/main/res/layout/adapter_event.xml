@@ -33,6 +33,15 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
+            android:id="@+id/btn_share"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:background="@drawable/transparent_bg"
+            app:srcCompat="@drawable/ic_share"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
             android:id="@+id/btn_remove"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -41,6 +50,7 @@
             android:visibility="gone"
             app:srcCompat="@drawable/ic_delete"
             tools:ignore="SpeakableTextPresentCheck" />
+
     </LinearLayout>
 
     <LinearLayout

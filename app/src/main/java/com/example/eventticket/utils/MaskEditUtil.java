@@ -5,7 +5,6 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 public class MaskEditUtil {
-    public static final String FORMAT_CPF = "###.###.###-##";
     public static final String FORMAT_DATE = "##/##/####";
     public static final String FORMAT_HOUR = "##:##";
 
