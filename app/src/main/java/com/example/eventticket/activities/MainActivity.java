@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
         session = new SessionModel(getApplicationContext());
 
-        session.setUserName("admin");
+        session.setUserName("usuario");
 
         //Se já existir sessão, vai automaticamente para a tela home
         if(!session.getUserName().equals("") ) {
-            Intent intent = new Intent(getApplicationContext(), HomeAdminActivity.class);
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
             finish();
         }

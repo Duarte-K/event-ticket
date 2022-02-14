@@ -41,7 +41,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterEventActivity extends AppCompatActivity {
-    private String city, genre;
+
     private ImageView btnPhoto;
     private ArrayList<ArtistsModel> artistsList = new ArrayList<>();
     private EventModel eventModel = new EventModel();
@@ -250,7 +250,7 @@ public class RegisterEventActivity extends AppCompatActivity {
             View artistViewChild = layout.getChildAt(i);
 
             EditText editTextItem = artistViewChild.findViewById(R.id.et_Artist);
-            if(i >= 9){
+            if(i >= 4){
                 editTextItem.setHint("Artista "+(i+1));
             }else{
                 editTextItem.setHint("Artista 0"+(i+1));

@@ -7,7 +7,6 @@ public class EventModel {
     private String hour;
     private String date;
     private String genre;
-    private String artists;
     private String description;
     private String message;
     private byte[] picture;
@@ -42,14 +41,6 @@ public class EventModel {
 
     public void setGenre(String genre) {
         this.genre = genre;
-    }
-
-    public String getArtists() {
-        return artists;
-    }
-
-    public void setArtists(String artists) {
-        this.artists = artists;
     }
 
     public String getDescription() {
