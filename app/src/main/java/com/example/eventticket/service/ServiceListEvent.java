@@ -2,12 +2,12 @@ package com.example.eventticket.service;
 
 import com.example.eventticket.model.EventModel;
 
-import okhttp3.RequestBody;
+import java.util.ArrayList;
+
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
+import retrofit2.http.GET;
 
 public interface ServiceListEvent {
-    @POST("listEvent")
-    Call<EventModel> listEvent(@Body RequestBody object);
+    @GET("listEvent")
+    Call<ArrayList<EventModel>> listEvent();
 }

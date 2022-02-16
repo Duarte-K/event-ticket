@@ -45,12 +45,12 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         //Se já existir uma sessão, vai automaticamente para tela home
         if(!session.getUserName().equals("") ) {
-            if(session.getUserName().equals("usuario")){
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            if(session.getUserName().equals("admin")){
+                Intent intent = new Intent(getApplicationContext(), HomeAdminActivity.class);
                 startActivity(intent);
                 finish();
-            }else if(session.getUserName().equals("admin")){
-                Intent intent = new Intent(getApplicationContext(), HomeAdminActivity.class);
+            }else{
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
                 finish();
             }

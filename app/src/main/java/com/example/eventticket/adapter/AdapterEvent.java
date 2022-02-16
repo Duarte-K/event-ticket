@@ -36,7 +36,7 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.MyViewHolder
         holder.genre.setText(listEvent.get(position).getGenre());
         holder.local.setText(listEvent.get(position).getLocal());
         holder.date.setText(listEvent.get(position).getDate());
-        holder.hour.setText(listEvent.get(position).getHour());
+        //holder.hour.setText(listEvent.get(position).getHour());
 
     }
 
